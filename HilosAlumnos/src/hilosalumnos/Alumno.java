@@ -5,7 +5,7 @@ public class Alumno implements Runnable {
 	String  mensaje;
 
 	public Alumno (String nombre) {
-		if (nombre == "pepito") {
+		if (nombre.toLowerCase().equals("pepito") || nombre.toLowerCase().equals("Pepito")) {
 			this.mensaje = "Mira que ser yo " + nombre + "... pues me cierro";
 		} else {
 			this.mensaje = "Hola soy " + nombre + " y este es mi mensaje numero: ";
@@ -16,17 +16,19 @@ public class Alumno implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		 for (int i = 1; i <= 5; i++) {
-			 if (nombre != "pepito") {
-				 System.out.println(mensaje + i);
+			 if (this.mensaje.equals("Mira que ser yo pepito... pues me cierro") || this.mensaje.equals("Mira que ser yo Pepito... pues me cierro")) {
+				 System.out.println(mensaje);
+				 return;
 			 
 			 } else {
-				 System.out.println(mensaje);
-			 }
+				 System.out.println(mensaje + i);
+			
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			 }
 			}
 		 }
 	}
@@ -36,3 +38,4 @@ public class Alumno implements Runnable {
 	}
 
 }
+
