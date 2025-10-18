@@ -16,7 +16,7 @@ public class Alumno implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		 for (int i = 1; i <= 5; i++) {
-			 if (this.mensaje.equals("Mira que ser yo Pepito... pues me cierro")) {
+			 if (this.mensaje.equals("Mira que ser yo pepito... pues me cierro")) {
 				 System.out.println(mensaje);
 				 return;
 			 
@@ -38,5 +38,6 @@ public class Alumno implements Runnable {
 	}
 
 }
+
 
 
