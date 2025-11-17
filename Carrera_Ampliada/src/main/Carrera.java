@@ -4,8 +4,7 @@ public class Carrera implements Runnable{
 
 	public Tunel tunel;
 	public Animal animal;
-	
-	
+	public int contador = 0;
 	
 	public Carrera(Tunel tunel, Animal animal) {
 		this.tunel = tunel;
@@ -15,6 +14,14 @@ public class Carrera implements Runnable{
 	@Override
 	public void run() {
 		for (int k = 0; k < 300; k++) {
+			animal.avanzar();
+			
+			if (animal.getAvanza() >= 300) {
+				System.out.println(animal.getNombre() + " ¡llego a la meta!");
+				//return;
+				System.exit(0);
+			}
+		
 			if (animal.getAvanza() == 50) {
 				try {
 					tunel.ticketEntrada();
@@ -29,21 +36,12 @@ public class Carrera implements Runnable{
 				System.out.println("**** " + animal.getNombre() + " salio del tunel ****");
 			}
 			
-			animal.avanzar();
-			if (animal.getAvanza() >= 300) {
-				System.out.println(animal.getNombre() + " llego a la meta!");
-				//return;
-				System.exit(0);
-			}
-			
 			try {
-				Thread.sleep(200);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-	
-
 }
