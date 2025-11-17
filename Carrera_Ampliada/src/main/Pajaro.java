@@ -31,7 +31,8 @@ public class Pajaro extends Animal {
 			}
 		}
 	}
-	
+
+	//Dejo comentada esta parte porque es un lio
 	public void volar() { //Decidir si el pajaro camina o vuela, y en que direccion
 		int volarRandom = (int) (Math.random()*10 + 1);
 		if (volarRandom > 7) {
@@ -112,4 +113,5 @@ public class Pajaro extends Animal {
 				System.out.println("Oh no, tu pajaro " + nombre + " esta tan confuso que volo hacia atras y retrocedio hasta los " + this.avanza + " metros");
 		}
 	}
+
 }
