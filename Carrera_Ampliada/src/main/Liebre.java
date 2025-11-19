@@ -27,13 +27,13 @@ public class Liebre extends Animal{
 			if (liebreVaga != 4) {
 	            	liebreAvanza();
 	    			
-			}	else if (liebreVaga == 4) {
-					System.out.println("¡La liebre " + nombre + " se ha dormido y no avanzara hasta dentro de " + segundosQuieta + " segundos!");
-					segundosQuieta --;
-					
-					if (segundosQuieta == 0) {
-						liebreVaga = 0;
-					}
+			} else if (liebreVaga == 4) {
+				System.out.println("¡La liebre " + nombre + " se ha dormido y no avanzara hasta dentro de " + segundosQuieta + " segundos!");
+				segundosQuieta --;
+				
+				if (segundosQuieta == 0) {
+					liebreVaga = 0;
+				}
 			}
 		}	
 	}
@@ -46,3 +46,4 @@ public class Liebre extends Animal{
 	}
 }
 	
+
