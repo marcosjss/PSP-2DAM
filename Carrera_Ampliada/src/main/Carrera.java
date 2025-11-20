@@ -5,7 +5,7 @@ public class Carrera implements Runnable{
 	public Tunel tunel;
 	public Animal animal;
 	public int contador = 0;
-	public static int sleep = 200; //Cambia el Thread.sleep de esta clase y de Viento tambien, para solo tener que cambiar un valor
+	public static int sleep = 1000; //Cambia el Thread.sleep de esta clase y de Viento tambien, para solo tener que cambiar un valor
 	
 	public Carrera(Tunel tunel, Animal animal) {
 		this.tunel = tunel;
@@ -41,4 +41,5 @@ public class Carrera implements Runnable{
 		System.out.println(animal.getNombre() + " ¡llego a la meta!");
 		System.exit(0);
 	}
+
 }
