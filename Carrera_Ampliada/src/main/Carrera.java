@@ -41,5 +41,4 @@ public class Carrera implements Runnable{
 		System.out.println(animal.getNombre() + " ¡llego a la meta!");
 		System.exit(0);
 	}
-
 }
