@@ -4,6 +4,8 @@ public class Pajaro extends Animal {
 	private int velocidad = 3;
 	private int avanza = 0;
 	private boolean volando = false;
+	private int caeSuelo = 5;
+	private boolean charco = false;
 	
 	public Pajaro(String nombre, Thread viento) {
 		super(nombre, viento);
@@ -14,7 +16,7 @@ public class Pajaro extends Animal {
 	}
 
 	@Override
-	public void avanzar() {
+	public void avanzar() { //He hecho muchas pruebas y el pajaro no hace nada raro, pero probablemente siga teniendo errores
 		volar();
 		if (llegarAlTunel() == true) {
 			llegarAlTunel();
@@ -23,16 +25,16 @@ public class Pajaro extends Animal {
 			pajaroVolando();
 			
 		} else {
-			if (velocidad == 3 || velocidad == 10) {
+			if (velocidad == 3) {
+				pisaCharco();
+			} else if (velocidad == 10) {
 				pajaroAvanza();
-					
 			} else if (velocidad == -10) {
 				retroceder();
 			}
 		}
 	}
-
-	//Dejo comentada esta parte porque es un lio
+	
 	public void volar() { //Decidir si el pajaro camina o vuela, y en que direccion
 		int volarRandom = (int) (Math.random()*10 + 1);
 		if (volarRandom > 7) {
@@ -57,8 +59,14 @@ public class Pajaro extends Animal {
 			this.avanza = this.avanza + this.velocidad;
 				System.out.println("El pajaro " + nombre + " hecho a volar a favor del viento y avanzo hasta los " + this.avanza + " metros");
 		} else if (velocidad == -5) {
-			this.avanza = this.avanza + this.velocidad;
-				System.out.println("Oh no, tu pajaro " + nombre + " esta tan confuso que volo hacia atras en contra del viento y retrocedio hasta los " + this.avanza + " metros");
+			if (avanza >= 50 && avanza <= 56 && volandoConViento() == true || avanza >= 150 && avanza <= 156 && volandoConViento() == true) { 
+				while (velocidad < 0) {
+					volar();	
+				}
+			} else {
+				this.avanza = this.avanza + this.velocidad;
+					System.out.println("Oh no, tu pajaro " + nombre + " esta tan confuso que volo hacia atras en contra del viento y retrocedio hasta los " + this.avanza + " metros");					
+			}
 		}
 	}
 	
@@ -102,7 +110,7 @@ public class Pajaro extends Animal {
 	}
 	
 	public void retroceder() { //Para no retroceder cerca de la entrada/salida del tunel, si no el programa se para (No sabia como hacer para solucionarlo de otra forma)
-		if (avanza >= 50 && avanza <= 61 || avanza >= 150 && avanza <= 161 || avanza >= 45 && avanza <= 66 && volandoConViento() == true || avanza >= 145 && avanza <= 166 && volandoConViento() == true) { 
+		if (avanza >= 50 && avanza <= 61 || avanza >= 150 && avanza <= 161) { 
 			while (velocidad < 0) {
 				volar();				
 			}
@@ -113,5 +121,30 @@ public class Pajaro extends Animal {
 				System.out.println("Oh no, tu pajaro " + nombre + " esta tan confuso que volo hacia atras y retrocedio hasta los " + this.avanza + " metros");
 		}
 	}
-
+	
+	public void hayCharco() {
+		if (this.avanza != 0 && this.avanza != 50 && this.avanza != 150) { //He puesto que en la entrada y salida del tunel no haya charco
+			if (charco == false) {
+				if (this.avanza % 10 == 0) { 
+					charco = true;
+					caeSuelo = 5;
+				}
+			}
+		}
+	}
+	
+	public void pisaCharco() {
+		hayCharco();
+    	if (charco == false) {
+    		pajaroAvanza();
+    	} else if (charco = true) {
+			if (caeSuelo == 0) {
+				charco = false;
+				pajaroAvanza();
+			} else {
+				System.out.println("¡El pajaro " + nombre + " cayo en un charco y resbalo, se levantara en " + caeSuelo + " segundos!");
+				caeSuelo--;
+			}
+    	}	
+    }
 }

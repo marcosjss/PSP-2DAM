@@ -25,7 +25,7 @@ private static boolean hayViento = false;
 		while (true) {
 			iniciarViento();
 			try {
-				Thread.sleep(500);
+				Thread.sleep(Carrera.sleep);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

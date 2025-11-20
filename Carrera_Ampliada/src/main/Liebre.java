@@ -28,7 +28,6 @@ public class Liebre extends Animal{
 		} else {
 			if (liebreVaga != 4) {
 	            pisaCharco();
-				//liebreAvanza();
 	    			
 			} else if (liebreVaga == 4) {
 				liebreDuerme();
@@ -51,21 +50,6 @@ public class Liebre extends Animal{
 			liebreVaga = 0;
 		}
 	}
-	
-	public void pisaCharco() {
-		hayCharco();
-    	if (charco == false) {
-    		liebreAvanza();
-    	} else if (charco = true) {
-			if (caeSuelo == 0) {
-				charco = false;
-				liebreAvanza();
-			} else {
-				System.out.println("¡La liebre " + nombre + " cayo en un charco y resbalo, se levantara en " + caeSuelo + " segundos");
-				caeSuelo--;
-			}
-    	}	
-    }
 
 	public void hayCharco() {
 		if (this.avanza != 0 && this.avanza != 50 && this.avanza != 150) { //He puesto que en la entrada y salida del tunel no haya charco
@@ -77,7 +61,20 @@ public class Liebre extends Animal{
 			}
 		}
 	}
+	
+	public void pisaCharco() {
+		hayCharco();
+    	if (charco == false) {
+    		liebreAvanza();
+    	} else if (charco = true) {
+			if (caeSuelo == 0) {
+				charco = false;
+				liebreAvanza();
+			} else {
+				System.out.println("¡La liebre " + nombre + " cayo en un charco y resbalo, se levantara en " + caeSuelo + " segundos!");
+				caeSuelo--;
+			}
+    	}	
+    }
 }
 	
-
-
