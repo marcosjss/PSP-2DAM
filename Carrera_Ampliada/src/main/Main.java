@@ -11,8 +11,8 @@ public class Main {
 		Thread pajaro = new Thread(new Carrera (tunel, new Pajaro("Pajaro", viento)));
 
 		viento.start();
-		//tortuga.start();
-		//liebre.start();
+		tortuga.start();
+		liebre.start();
 		pajaro.start();
 
 	}

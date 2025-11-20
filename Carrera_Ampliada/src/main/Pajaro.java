@@ -17,21 +17,25 @@ public class Pajaro extends Animal {
 
 	@Override
 	public void avanzar() { //He hecho muchas pruebas y el pajaro no hace nada raro, pero probablemente siga teniendo errores
-		volar();
-		if (llegarAlTunel() == true) {
-			llegarAlTunel();
-			
-		} else if (volandoConViento() == true) {
-			pajaroVolando();
-			
-		} else {
-			if (velocidad == 3) {
-				pisaCharco();
-			} else if (velocidad == 10) {
-				pajaroAvanza();
-			} else if (velocidad == -10) {
-				retroceder();
+		if (charco == false) {
+			volar();
+			if (llegarAlTunel() == true) {
+				llegarAlTunel();
+				
+			} else if (volandoConViento() == true) {
+				pajaroVolando();
+				
+			} else {
+				if (velocidad == 3) {
+					pisaCharco();
+				} else if (velocidad == 10) {
+					pajaroAvanza();
+				} else if (velocidad == -10) {
+					retroceder();
+				}
 			}
+		} else {
+			pisaCharco();
 		}
 	}
 	
@@ -140,6 +144,7 @@ public class Pajaro extends Animal {
     	} else if (charco = true) {
 			if (caeSuelo == 0) {
 				charco = false;
+				volar();
 				pajaroAvanza();
 			} else {
 				System.out.println("¡El pajaro " + nombre + " cayo en un charco y resbalo, se levantara en " + caeSuelo + " segundos!");
